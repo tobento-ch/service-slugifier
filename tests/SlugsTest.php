@@ -152,7 +152,7 @@ class ResourcePriority implements ResourceInterface
 {
     public function __construct(
         protected array $slugs = [],
-        protected int $priority,
+        protected int $priority = 0,
         public int $usage = 0,
     ) {}
 
