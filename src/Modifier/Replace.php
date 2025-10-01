@@ -42,7 +42,6 @@ class Replace implements ModifierInterface
      *
      * @param string $string
      * @param string $locale
-     * @param SlugifierInterface $slugifier
      * @return string The modified string
      */
     public function modify(string $string, string $locale): string
