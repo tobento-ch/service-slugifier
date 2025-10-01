@@ -52,6 +52,6 @@ class Regex implements ModifierInterface
             return $string;
         }
         
-        return preg_replace($this->pattern, $this->separator, $string);
+        return (string)preg_replace($this->pattern, $this->separator, $string);
     }
 }

@@ -38,6 +38,6 @@ class AlphaNumOnly implements ModifierInterface
      */
     public function modify(string $string, string $locale): string
     {
-        return preg_replace('~[^\w\d-]+~', $this->separator, $string);
+        return (string)preg_replace('~[^\w\d-]+~', $this->separator, $string);
     }
 }
