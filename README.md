@@ -47,7 +47,7 @@ composer require tobento/service-slugifier
 
 ## Requirements
 
-- PHP 8.0 or greater
+- PHP 8.4 or greater
 
 ## Highlights
 
@@ -67,7 +67,7 @@ You may use the ```SlugifierFactory``` to easily create a slugifier.
 use Tobento\Service\Slugifier\SlugifierFactory;
 use Tobento\Service\Slugifier\SlugifierInterface;
 
-$slugifier = (new SlugifierFactory())->createSlugifier();
+$slugifier = new SlugifierFactory()->createSlugifier();
 
 var_dump($slugifier instanceof SlugifierInterface);
 // bool(true)
