@@ -215,7 +215,15 @@ var_dump($string);
 
 ### Prevent Dublicate Modifier
 
-This modifier prevents dublicate slugs. This modifier should be added last!
+This modifier ensures that generated slugs are unique.  
+If a slug already exists, a numeric suffix is appended or incremented.  
+This modifier should be added **last**, after all other modifiers.
+
+Duplicate handling rules:
+- `login` to `login-1`
+- `login-1` to `login-2`
+- `product-2024` to `product-2025`
+- If too many duplicates exist, a timestamp is used as fallback.
 
 ```php
 use Tobento\Service\Slugifier\Modifier\PreventDublicate;
