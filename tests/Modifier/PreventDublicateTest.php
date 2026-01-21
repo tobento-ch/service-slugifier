@@ -48,12 +48,20 @@ class PreventDublicateTest extends TestCase
         
         $slugs->addResource(new ArrayResource(['login-1']));
         
-        $this->assertSame('login-1-1', $m->modify('login-1', 'en'));
+        $this->assertSame('login-2', $m->modify('login-1', 'en'));
         $this->assertSame('login-2', $m->modify('login', 'en'));
         
         $slugs->addResource(new ArrayResource(['login-2']));
         
         $this->assertSame('login-3', $m->modify('login', 'en'));
+    }
+    
+    public function testModifyTreatsNumericSuffixAsIncrementable()
+    {
+        $slugs = new Slugs(new ArrayResource(['product-2024']));
+        $m = new PreventDublicate(slugs: $slugs);
+
+        $this->assertSame('product-2025', $m->modify('product-2024', 'en'));
     }
     
     public function testModifyIfLimitReachedUsesTime()
