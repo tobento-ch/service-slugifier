@@ -1,6 +1,6 @@
 {
     "name": "tobento/service-slugifier",
-    "version": "2.0",
+    "version": "2.0.1",
     "type": "library",
     "description": "The slugifier service provides interfaces to convert a string into a slug.",
     "keywords": [
