@@ -50,17 +50,26 @@ class PreventDublicate implements ModifierInterface
      */
     protected function generateUniqueSlug(string $string, string $locale): string
     {
-        $originalString = $string;
-        $limit = 5;
-        $i = 1;
+        // Detect existing numeric suffix: slug-2, slug-10, etc.
+        if (preg_match('/^(.*)' . preg_quote($this->separator, '/') . '(\d+)$/', $string, $matches)) {
+            $base = $matches[1];
+            $i = (int)$matches[2];
+        } else {
+            $base = $string;
+            $i = 1;
+        }
+
+        // Dynamic limit: allow 5 attempts beyond the current suffix
+        $limit = $i + 5;
 
         while ($this->slugs->exists($string, $locale)) {
-            
+
             if ($i >= $limit) {
-                return $originalString.'-'.time();
+                return $base . $this->separator . time();
             }
-            
-            $string = $originalString.$this->separator.$i++;
+
+            $string = $base . $this->separator . $i;
+            $i++;
         }
 
         return $string;
